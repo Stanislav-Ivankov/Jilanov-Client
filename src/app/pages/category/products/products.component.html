@@ -1,0 +1,75 @@
+<div class="Products_Wrapper">
+
+	<div *ngFor="let Product of products" [hidden]="Product.hidden" [routerLink]="['/category', Product.category, 'product', Product.url]" class="Card card">
+
+		<section class="Promotion-Label">
+			<div *ngIf="Product.promotion == 'true' " class="Promotion-Label__Text">-{{ Product.discount }}%</div>
+		</section>
+
+		<section *ngIf="Product.status" class="Status-Label">
+			<div class="Status-Label__Text"
+				data-toggle="popover" 
+				data-trigger="hover"
+				data-placement="top"
+				data-html="true"
+				[title]="Product.status" 
+				[attr.data-content]="Product.statusContent"
+			>{{ Product.status }}</div>
+		</section>
+
+		<div class="Legend">
+				<img *ngIf="Product.promotion == 'true' " class="Promotion" title="Promotion" src="./assets/images/Promotion.svg" draggable="false">
+				<img *ngIf="Product.newProduct == 'true' " class="New-Product" title="New Product" src="./assets/images/New-Product.svg" draggable="false">
+		</div>
+
+		<img class="card-img-top" [src]="getImageLink + Product.images[0]" draggable="false">
+
+		<div class="Card-Body card-body">
+			<h3 class="Card-Title card-title">{{ Product.model[getLanguage] }}</h3>
+			<section class="Card-Text card-text">
+				<div *ngFor="let extra of Product.params[getLanguage]">
+					<ng-container *ngIf="extra.key !== 'status'">
+						<img [src]="'./assets/images/Products_' + extra.key + '.svg'" draggable="false">
+						{{ extra.value }}
+					</ng-container>
+					<ng-container *ngIf="extra.key === 'status'">
+						<span>Status: </span>
+						{{ extra.value }}
+					</ng-container>
+				</div>
+			</section>
+		</div>
+
+		<div class="Card-Links card-body">
+			<!-- <a *ngIf="Product.Promotion == 'false' " class="Card-Link card-link">BGN {{ Product.price }}</a>
+			<a *ngIf="Product.Promotion == 'true' " class="Discount Card-Link card-link">BGN {{ Product.price | Discount: Product.discount }}</a>
+			<a href="#" class="Card-Link card-link">
+				<i class="fas fa-cart-plus"></i>
+			</a> -->
+			<span>{{Product.price}} {{'global:bgn' | translate }}</span>
+		</div>
+	</div>
+
+</div>
+
+
+
+<!-- <ul class="Pagination pagination justify-content-center">
+	<li class="page-item disabled">
+		<a class="page-link" href="#" tabindex="-1" >Previous</a>
+	</li>
+
+	<li class="page-item active">
+		<a class="page-link" href="#">1</a>
+	</li>
+	<li class="page-item">
+		<a class="page-link" href="#">2</a>
+	</li>
+	<li class="page-item">
+		<a class="page-link" href="#">3</a>
+	</li>
+
+	<li class="page-item">
+		<a class="page-link" href="#">Next</a>
+	</li>
+</ul> -->

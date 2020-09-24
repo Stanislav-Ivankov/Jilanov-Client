@@ -1,0 +1,42 @@
+@import '../../../assets/scss/variables.scss';
+
+
+
+.Maintenance-Page {
+	@include Absolute-Center;
+	width: 75%;
+	text-align: center;
+
+	img {
+		@include Image-Size(128px);
+		margin: 0px auto 50px;
+	}
+
+	&__Title {
+		margin-bottom: 50px;
+		font-size: 32px;
+	}
+
+	&__Description {
+		margin-bottom: 50px;
+		font-size: 24px;
+	}
+
+	&__Contacts {
+		margin-bottom: 25px;
+		font-size: 16px;
+
+		a {
+			text-decoration: none;
+			color: rgba($Main-Gradient-3rd-Part, 1);
+		}
+	}
+
+	&__Icons {
+
+		img {
+			@include Image-Size(32px, inline-block);
+			margin: 0px 12.5px;
+		}
+	}
+}

@@ -1,0 +1,57 @@
+<h3>{{ 'global:last-seen' | translate }}</h3>
+<hr>
+
+
+
+<section class="Last-Seen-Items-Container">
+
+	<div *ngFor="let Product of Products" [routerLink]="['/category', Product.category, 'product', Product.url]" class="Card card">
+
+		<section class="Promotion-Label">
+			<div *ngIf="Product.Promotion == 'true' " class="Promotion-Label__Text">-{{ Product.discount }}%</div>
+		</section>
+
+		<section *ngIf="Product.status" class="Status-Label">
+			<div class="Status-Label__Text"
+				data-toggle="popover" 
+				data-trigger="hover"
+				data-placement="right"
+				data-html="true"
+				[title]="Product.status" 
+				[attr.data-content]="Product.statusContent"
+			>{{ Product.status }}</div>
+		</section>
+
+		<div class="Legend">
+			<img *ngIf="Product.promotion == 'true' " class="Promotion" title="Promotion" src="./assets/images/Promotion.svg" draggable="false">
+			<img *ngIf="Product.newProduct == 'true' " class="New-Product" title="New Product" src="./assets/images/New-Product.svg" draggable="false">
+		</div>
+
+		<img class="card-img-top" [src]="getImageLink + (Product.images && Product.images[0])" draggable="false">
+
+		<div class="Card-Body card-body">
+			<h3 class="Card-Title card-title">{{ Product.Model }}</h3>
+			<section class="Card-Text card-text">
+				<div *ngFor="let param of Product.params[getLanguage]" class="Card-Text__Storage">
+					<ng-container *ngIf="param.key !== 'status'">
+						<img [src]="'./assets/images/Products_' + param.key + '.svg'" draggable="false">
+						{{ param.value }}
+					</ng-container>
+					<ng-container *ngIf="param.key === 'status'">
+						<span>Status: </span>
+						{{ param.value }}
+					</ng-container>
+				</div>
+			</section>
+		</div>
+
+		<!-- <div class="Card-Links card-body">
+			<a *ngIf="Product.promotion == 'false' " class="Card-Link card-link">{{ Product.price }} BGN</a>
+			<a *ngIf="Product.promotion == 'true' " class="Discount Card-Link card-link">{{ Product.price | Discount: Product.discount }} BGN</a>
+			<a href="#" class="Card-Link card-link">
+				<i class="fas fa-cart-plus"></i>
+			</a>
+		</div> -->
+	</div>
+
+</section>

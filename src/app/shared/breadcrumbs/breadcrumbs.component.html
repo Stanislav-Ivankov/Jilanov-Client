@@ -1,0 +1,10 @@
+<article>
+	<ul class="Breadcrumb breadcrumb" [ngStyle]="Smart_Width">
+		<li routerLink="/home" title="Home" class="Breadcrumb__Home breadcrumb-item">
+			<img src="./assets/images/HOME-Button.svg" draggable="false">
+		</li>
+		<li [routerLink]="'/category/' + category" title="Category" class="Breadcrumb__Category breadcrumb-item">{{ category }}</li>
+		<li title="Product" class="Breadcrumb__Product breadcrumb-item">{{product}}</li>
+	</ul>
+	<aside class="Items-Found" *ngIf="products !== null">{{ products }} {{ 'global:items-found' | translate }}</aside>
+</article>

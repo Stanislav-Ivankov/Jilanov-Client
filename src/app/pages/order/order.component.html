@@ -1,0 +1,181 @@
+<h3>{{ 'global:order' | translate }}</h3>
+<hr>
+
+<form [formGroup]="form" class="Order-Form">
+
+	<h4>{{ 'global:delivery-info' | translate }}</h4>
+
+	<section class="row">
+		<aside class="col">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fas fa-signature"></i>
+					</span>
+				</div>
+				<input formControlName="name" type="text" class="Name_&_Surname form-control" placeholder="{{ 'global:name-surname' | translate }}">
+			</div>
+			<span *ngIf="form.get('name').invalid && (form.get('name').dirty || form.get('name').touched)" class="Error-Name_&_Surname form-text">{{ 'global:required-field' | translate }}</span>
+		</aside>
+
+		<aside class="col">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fas fa-signature"></i>
+					</span>
+				</div>
+				<input formControlName="email"  type="text" class="Email form-control" placeholder="{{ 'global:email' | translate }}">
+			</div>
+			<span *ngIf="form.get('email').invalid && (form.get('email').dirty || form.get('email').touched)" class="Error-Surname form-text">{{ 'global:required-field' | translate }}</span>
+		</aside>
+	</section>
+
+	<section class="row">
+		<aside class="col">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fas fa-signature"></i>
+					</span>
+				</div>
+				<input formControlName="phone"  type="text" class="Phone form-control" placeholder="{{ 'global:phone' | translate }}">
+			</div>
+			<span *ngIf="form.get('phone').invalid && (form.get('phone').dirty || form.get('phone').touched)" class="Error-Phone form-text">{{ 'global:required-field' | translate }}</span>
+		</aside>
+
+		<aside class="col">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fas fa-signature"></i>
+					</span>
+				</div>
+				<input formControlName="city"  type="text" class="City form-control" placeholder="{{ 'global:city' | translate }}">
+			</div>
+			<span *ngIf="form.get('city').invalid && (form.get('city').dirty || form.get('city').touched)" class="Error-City form-text">{{ 'global:required-field' | translate }}</span>
+		</aside>
+
+	</section>
+
+	<section class="row">
+
+		<aside class="col">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fas fa-signature"></i>
+					</span>
+				</div>
+				<input formControlName="neighbourhood"  type="text" class="Neighbourhood form-control" placeholder="{{ 'global:neighbourhood' | translate }}">
+			</div>
+			<span *ngIf="form.get('neighbourhood').invalid && (form.get('neighbourhood').dirty || form.get('neighbourhood').touched)" class="Error-Neighbourhood form-text">{{ 'global:required-field' | translate }}</span>
+		</aside>
+
+		<aside class="col">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fas fa-signature"></i>
+					</span>
+				</div>
+				<input formControlName="street"  type="text" class="Street form-control" placeholder="{{ 'global:street' | translate }}">
+			</div>
+			<span *ngIf="form.get('street').invalid && (form.get('street').dirty || form.get('street').touched)" class="Error-Street form-text">{{ 'global:required-field' | translate }}</span>
+		</aside>
+	</section>
+
+	<section class="row">
+
+		<aside class="col">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fas fa-signature"></i>
+					</span>
+				</div>
+				<input formControlName="address"  type="text" class="Street_Number form-control" placeholder="{{ 'global:address-number' | translate }}">
+			</div>
+			<span *ngIf="form.get('address').invalid && (form.get('address').dirty || form.get('address').touched)" class="Error-Street_Number form-text">{{ 'global:required-field' | translate }}</span>
+		</aside>
+	</section>
+
+	<h4 class="margin-top-small">{{ 'global:additional-comments' | translate }}</h4>
+	<textarea formControlName="message"  form="Order-Form" rows="5" maxlength="250" placeholder="{{ 'global:additional-comments' | translate }}"></textarea>
+
+</form>
+
+
+<aside class="Order-Items margin-top-small">
+
+	<h4 class="Order-Items__Review" >{{ 'global:please-check' | translate }}</h4>
+
+	<section class="Order-Items__Table table-responsive">
+
+		<table class="Table table">
+
+			<tbody>
+
+				<tr *ngFor="let item of items">
+
+					<td>
+						<img class="Product-Image" [src]="getImageLink + item.images[0]" draggable="false">
+					</td>
+
+					<td>
+						<section class="Product-Model">{{ item.model[getLanguage] }}</section>
+					</td>
+
+					<td>
+						<section class="Product-Model">
+							<label>{{ 'global:extras' | translate }}</label>
+							<div *ngFor="let extra of item.aditionalExtras">{{extra.key[getLanguage]}}</div>
+						</section>
+					</td>
+
+					<td>
+						<div class="Product-Quantity input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text">
+									<img src="./assets/images/CartComponent/Hashtag.svg" draggable="false">
+								</span>
+							</div>
+							<input type="number" class="form-control" [placeholder]="item.amount" disabled>
+						</div>
+					</td>
+
+					<td>
+						<div class="Product-Price input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text">{{ 'global:bgn' | translate }}</span>
+							</div>
+							<input class="form-control" [placeholder]="item.totalPrice" disabled>
+						</div>
+					</td>
+
+				</tr>
+
+			</tbody>
+
+		</table>
+
+	</section>
+
+</aside>
+
+
+
+<section class="Bill">
+	<p class="Bill__Without-VAT">{{ 'global:total-price' | translate }} &#x3a; {{ totalPrice }} {{ 'global:bgn' | translate }}</p>
+	<p class="Bill__VAT-Value">{{ 'global:vat' | translate }} 20% &#x3a; {{ totalPrice*0.2 }} {{ 'global:bgn' | translate }}</p>
+	<p class="Bill__With-VAT">{{ 'global:with-vat-total' | translate }} &#x3a; {{ totalPrice*1.2 }} {{ 'global:bgn' | translate }}</p>
+</section>
+
+<!-- <section class="General-Conditions custom-control custom-checkbox">
+	<input type="checkbox" class="custom-control-input">
+	<label for="Sign-Me-Up" class="custom-control-label">{{ 'global:accept-conditions' | translate }}</label>
+</section> -->
+<div class="text-center">
+	<button (click)="goBack()" type="button" class="btn btn-outline-dark">{{ 'global:back' | translate }}</button>
+	<button (click)="order()" type="button" class="btn btn-success double-width">{{ 'global:buy' | translate }}</button>
+</div>

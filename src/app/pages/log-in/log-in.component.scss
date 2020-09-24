@@ -1,0 +1,109 @@
+@import '../../../assets/scss/variables.scss';
+
+
+
+.Tabs {
+	width: 75%;
+	max-width: 350px;
+	@include Horizontal-Center;
+	border-top-left-radius: 6.25px;
+	border-top-right-radius: 6.25px;
+	box-shadow: 0px 1px 5px rgba($Dark-White, 1);
+	@include Highlight-Tabs;
+	background-color: rgba($Dark-White, 1);
+
+	&__Log-In, &__Sign-Up {
+		width: 50%;
+
+		a {
+			@include Flex(center, center);
+			padding: 12.5px 0px;
+			border-radius: 0px;
+			text-decoration: none;
+			color: rgba($Black, 1);
+
+			img {
+				@include Image-Size(16px);
+				margin-right: 12.5px;
+			}
+		}
+	}
+}
+
+
+
+.Tab-Content {
+	width: 75%;
+    max-width: 350px;
+	margin: 0 auto 50px;
+	padding: 12.5px;
+	border-bottom-left-radius: 6.25px;
+	border-bottom-right-radius: 6.25px;
+	box-shadow: 0px 1px 5px rgba($Dark-White, 1);
+
+	&__Log-In {
+
+		.E-Mail-Input, .Password-Input {
+			margin-bottom: 12.5px;
+
+			img {
+				@include Image-Size(16px);
+			}
+		}
+
+		[class ^= "Error-"] {
+			display: block;
+			margin-bottom: 12.5px;
+			color: rgba($Main-Gradient-3rd-Part, 1);
+		}
+	}
+
+	button {
+		width: 100%;
+		margin-bottom: 12.5px;
+	}
+
+	.Forgotten-Password-Link {
+		text-decoration: none;
+		color: rgba($Black, 1);
+	}
+
+	hr {
+		margin: 12.5px 0px;
+		background-color: rgba($Dark-White, 0.25);
+	}
+
+
+
+	.Log-In-Options {
+
+		&__Title {
+			margin-bottom: 25px;
+			text-align: center;
+			font-size: 16px;
+		}
+
+		&__Container {
+			@include Flex(center, space-evenly);
+			text-decoration: none;
+
+			&__Google, &__Facebook {
+				@include Image-Size(32px);
+			}
+		}
+	}
+
+
+
+	&__Sign-Up {
+
+		.Sign-Up__Title {
+			margin-bottom: 12.5px;
+			font-size: 16px;
+		}
+
+		button {
+			width: 100%;
+		}
+	}
+}

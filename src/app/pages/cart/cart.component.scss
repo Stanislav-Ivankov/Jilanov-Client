@@ -1,0 +1,134 @@
+@import '../../../assets/scss/variables.scss';
+
+
+
+h3 {
+	margin-bottom: 25px;
+	text-align: center;
+	font-size: 24px;
+}
+
+hr {
+	width: 75%;
+	max-width: 700px;
+	margin-bottom: 50px;
+	background-color: rgba($Dark-White, 0.25);
+}
+
+
+
+.Empty-Cart {
+	width: 75%;
+	max-width: 700px;
+	margin: 0px auto 50px;
+	text-align: center;
+
+	&__Title {
+		margin-bottom: 25px;
+		font-size: 24px;
+	}
+
+	img {
+		@include Image-Size(128px);
+		margin: 0px auto 50px;
+	}
+
+	button {
+		width: 150px;
+	}
+}
+
+
+
+.Cart-Items {
+	margin: 0px auto 25px;
+	text-align: center;
+
+	&__Search {
+		width: 75%;
+		max-width: 700px;
+		margin: 0px auto 50px;
+
+		img {
+			@include Image-Size(16px);
+		}
+	}
+
+
+
+	&__Table {
+		width: 75%;
+		margin: 0px auto 50px;
+		text-align: center;
+
+		.Table {
+			margin-bottom: 0px;
+
+			thead {
+
+				tr, th {
+					border: none;
+				}
+			}
+
+			tbody {
+
+				tr {
+
+					&:not(:last-of-type) {
+						border-bottom: 1px solid rgba($Dark-White, 1);
+					}
+
+					td {
+						@include Spin-Button-Disable;
+						vertical-align: middle;
+						border: none;
+
+						.Product-Image {
+							@include Image-Size(128px);
+							@include Horizontal-Center;
+							outline: none;
+							cursor: pointer;
+						}
+
+						.Product-Name, .Product-Model, .Product-Quantity, .Product-Price {
+							width: 200px;
+							@include Horizontal-Center;
+
+							img {
+								@include Image-Size(16px);
+							}
+
+							input {
+								background-color: rgba(transparent, 0);
+							}
+						}
+
+						.Product-Remove {
+							width: 24px;
+							height: auto;
+							cursor: pointer;
+
+							path {
+								@include Media-Transition;
+
+								&:hover {
+									fill: rgba($Main-Gradient-3rd-Part, 1);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	button {
+		width: 150px;
+		margin: 0px 50px 25px;
+
+		&.double-width {
+			width: 200px;
+		}
+	}
+}

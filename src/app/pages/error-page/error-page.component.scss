@@ -1,0 +1,40 @@
+@import '../../../assets/scss/variables.scss';
+
+.Unauthorized, .Page-Not-Found, .Server-Error {
+	width: 75%;
+	max-width: 700px;
+	margin: 0px auto 25px;
+	text-align: center;
+
+	img {
+		@include Image-Size(128px);
+		margin: 0px auto 50px;
+	}
+
+	&__Title {
+		margin-bottom: 50px;
+		font-size: 32px;
+
+		&__Status-Code {
+			padding: 0px 6.25px;
+			border-radius: 3.125px;
+			color: rgba($White, 1);
+			background-color: rgba($Main-Gradient-3rd-Part, 1);
+		}
+	}
+
+	&__Description {
+		margin-bottom: 50px;
+		font-size: 24px;
+
+		a {
+			text-decoration: none;
+			color: rgba($Main-Gradient-3rd-Part, 1);
+		}
+	}
+
+	button {
+		width: 150px;
+		margin: 0px 50px 25px;
+	}
+}

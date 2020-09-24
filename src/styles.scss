@@ -1,0 +1,47 @@
+@import 'assets/scss/variables.scss';
+
+
+
+html, body {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	font-size: 16px;
+	@include Roboto-Mono;
+	background-color: rgba($White, 1);
+}
+
+.text-center {
+	text-align: center;
+}
+
+.margin-top-small {
+	margin-top: 10px;
+}
+
+.margin-top-big {
+	margin-top: 30px;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.margin-left-small {
+	margin-left: 10px;
+}
+
+.hidden {
+	display: none;
+}
+
+.block {
+	display: block;
+}
+
+@media (forced-colors: active) {
+	div, span, h1, h2, h3, h4, h5, section, article {
+		background-color: white;
+		color: black;
+	}
+  }

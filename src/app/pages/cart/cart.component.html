@@ -1,0 +1,88 @@
+<h3>{{ 'global:cart' | translate }}</h3>
+<hr>
+
+
+
+<main *ngIf="!items.length" class="Empty-Cart">
+
+	<h4 class="Empty-Cart__Title">{{ 'global:cart-is-empty' | translate }}</h4>
+	<img src="./assets/images/Products_Empty.svg" alt="Error Loading Icon" draggable="false">
+	<button (click)="goBack()" type="button" class="btn btn-outline-dark">{{ 'global:back' | translate }}</button>
+
+</main>
+
+
+
+<main *ngIf="items.length" class="Cart-Items">
+
+	<article class="Cart-Items__Search">
+		<section class="input-group">
+			<aside class="input-group-prepend">
+				<span class="input-group-text">
+					<img src="./assets/images/CartComponent/Search.svg" alt="Error Loading Icon" draggable="false">
+				</span>
+			</aside>
+			<input (change)="filter($event)" type="text" class="Form-Control form-control">
+		</section>
+	</article>
+
+
+
+	<article class="Cart-Items__Table table-responsive">
+
+		<table class="Table table">
+			<tbody>
+
+				<tr #ITEM *ngFor="let item of itemsCopy">
+					<td>
+						<img [routerLink]="['/category', item.category, 'product', item.productId]" [src]="getImageLink + item.images[0]" alt="Error Loading Image" draggable="false" class="Product-Image">
+					</td>
+
+					<td>
+						<section class="Product-Model">{{ item.model[getLanguage] | uppercase }}</section>
+					</td>
+
+					<td *ngIf="item.aditionalExtras.length">
+						<section class="Product-Model">
+							<label>{{ 'global:extras' | translate }}</label>
+							<div *ngFor="let extra of item.aditionalExtras">{{extra.key[getLanguage]}}</div>
+						</section>
+					</td>
+
+					<td>
+						<section class="Product-Quantity input-group">
+							<aside class="input-group-prepend">
+								<span class="input-group-text">
+									<img src="./assets/images/CartComponent/Hashtag.svg" alt="Error Loading Icon" draggable="false">
+								</span>
+							</aside>
+							<input (input)="monitorTotalPrice($event, item)" (keydown)="monitorTotalPrice($event, item)" type="number" placeholder="Of Items" [value]="item.amount" class="Form-Control form-control">
+						</section>
+					</td>
+					
+					<td>
+						<section class="Product-Price input-group">
+							<aside class="input-group-prepend">
+								<span class="input-group-text">BGN</span>
+							</aside>
+							<input value="{{ item.totalPrice }}" class="form-control" disabled>
+						</section>
+					</td>
+
+					<td>
+						<svg (click)="removeItem(item)" class="Product-Remove" viewBox="0 0 448 512">
+							<path fill="#000" d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path>
+						</svg>
+					</td>
+				</tr>
+
+			</tbody>
+
+		</table>
+
+	</article>
+
+	<button (click)="goBack()" type="button" class="btn btn-outline-dark">{{ 'global:back' | translate }}</button>
+	<button (click)="goOrder()" type="button" class="btn btn-success double-width">{{ 'global:checkout' | translate }}</button>
+
+</main>

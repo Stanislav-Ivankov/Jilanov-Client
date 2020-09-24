@@ -1,0 +1,43 @@
+<main data-ride="carousel" data-interval="2000" id="CAROUSEL" class="Carousel carousel slide carousel-fade">
+
+	<article class="carousel-inner">
+		<section *ngFor="let slide of slides; let Index = index" class="Carousel-Item carousel-item" [class.active]="0 == Index" [routerLink]="['/category', slide.category, 'product', slide.url]">
+			<img [src]="getImageLink + (mobile ? slide.mobileImage : slide.webImage)" alt="Error Loading Image" draggable="false">
+			<aside class="Caption">
+				<h3 *ngIf="slide.text[getLanguage] !== 'undefined'" class="Caption__Title" [style.color]="slide.textColor">{{ slide.text[getLanguage] }}</h3>
+				<p *ngIf="slide.description[getLanguage] !== 'undefined'" class="Caption__Description" [style.color]="slide.descriptionColor">{{ slide.description[getLanguage] }}</p>
+			</aside>
+		</section>
+	</article>
+
+	<a *ngFor="let arrow of arrows" href="#CAROUSEL" [attr.data-slide]="arrow.slide" [class]="arrow.class">
+		<img [src]="arrow.icon" alt="Error Loading Icon" draggable="false">
+	</a>
+
+	<ul class="carousel-indicators">
+		<li *ngFor="let slide of slides; let Index = index" data-target="#CAROUSEL" [attr.data-slide-to]="Index" [class.active]="0 == Index"></li>
+	</ul>
+
+</main>
+
+
+
+<!-- <div class="Accordion-Container">
+
+	<article *ngFor="let category of categories" [id]="category.accordion" class="Accordion accordion">
+		<section class="Card card">
+			<aside [id]="category.heading" class="Card-Header card-header">
+				<button data-toggle="collapse" [attr.data-target]="category.target" class="btn collapsed">{{ category.label | titlecase }}</button>
+			</aside>
+
+			<aside [attr.data-parent]="category.parent" [id]="category.collapse" class="collapse">
+				<div class="Card-Body">
+					<a *ngFor="let subCategory of category.subCategories" [routerLink]="subCategory.route" class="Card-Body__Content">
+						<img [src]="subCategory.icon" alt="Error Loading Icon" draggable="false">{{ subCategory.label | titlecase }}
+					</a>
+				</div>
+			</aside>
+		</section>
+	</article>
+
+</div> -->

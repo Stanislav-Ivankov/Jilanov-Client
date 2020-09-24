@@ -1,0 +1,34 @@
+<section class="Sort-Criteria">
+	<h4 class="Sort-Criteria__Title">{{ 'global:sort-criteria' | translate }}</h4>
+
+	<ng-container *ngFor="let Criteria of Sort_Criteria; let Index = index">
+		<input type="radio" name="Option" [id]="Criteria.ID">
+		<label (click)="Sort_Products(Criteria)" [for]="Criteria.ID">
+			<span *ngIf="Available_Promotion && Index == 0"><img src="./assets/images/Promotion.svg"></span>
+			<span *ngIf="Available_New_Product && Index == 1"><img src="./assets/images/New-Product.svg"></span>
+			{{'global:' + Criteria.ID | translate}}
+		</label>
+	</ng-container>
+</section>
+
+<div slider id="slider-distance">
+	<div>
+	  <div inverse-left style="width:70%;"></div>
+	  <div inverse-right style="width:70%;"></div>
+	  <div range style="left:5%;right:30%;"></div>
+	  <span thumb style="left:5%;"></span>
+	  <span thumb style="left:70%;"></span>
+	  <div sign style="left:5%;">
+		<span id="minvalue">150 {{bgnTranslation}}</span>
+	  </div>
+	  <div sign style="left:70%;">
+		<span id="maxvalue">2100 {{bgnTranslation}}</span>
+	  </div>
+	</div>
+	<input type="range" id="left" tabindex="0" value="5" max="100" min="0" step="1" (input)="onMinMove($event)" />
+	<input type="range" id="right" tabindex="1" value="70" max="100" min="0" step="1" (input)="onMaxMove($event)" />
+</div>
+
+<div class="Clear-Filters">
+	<input (click)="Clear_Filters()" class="Button btn btn-outline-danger" type="button" value="{{'global:clear-filters' | translate}}">
+</div>	

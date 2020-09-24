@@ -1,0 +1,90 @@
+<header *ngIf="!inMaintenance" class="Header">
+	<a routerLink="/">
+		<img src="./assets/images/ApplicationComponent/Logo.svg" alt="Error Loading Icon" draggable="false" class="Header__Logo">
+	</a>
+
+	<!-- <ng-container *ngIf="!isLogged; else LOGGED">
+		<a routerLink="/log-in">
+			<img src="./assets/images/ApplicationComponent/User Not Logged.svg" alt="Error Loading Icon" draggable="false" class="Header__User">
+		</a>
+	</ng-container> -->
+
+	<ng-template #LOGGED>
+		<a routerLink="#">
+			<img src="./assets/images/ApplicationComponent/User Logged.svg" alt="Error Loading Icon" draggable="false" class="Header__User">
+		</a>
+	</ng-template>
+
+	<a routerLink="/cart" class="Cart-Container">
+		<img src="./assets/images/ApplicationComponent/Cart.svg" alt="Error Loading Icon" draggable="false" class="Header__Cart">
+		<span *ngIf="itemsInCart" class="Header__Cart__Indicator">{{ itemsInCart }}</span>
+	</a>
+
+	<!-- <a *ngIf="isImportant" data-target="#IMPORTANT" data-toggle="modal">
+		<img src="./assets/images/ApplicationComponent/Important.svg" alt="Error Loading Icon" draggable="false" class="Header__Important">
+	</a> -->
+
+	<div id="IMPORTANT" class="Header__Modal modal fade">
+
+		<article class="modal-dialog modal-dialog-centered">
+			<section class="modal-content">
+				<aside class="Modal-Header modal-header">
+					<img src="./assets/images/ApplicationComponent/Important.svg" alt="Error Loading Icon" draggable="false">
+					<h4 class="Modal-Title modal-title ">{{ importantMessageTitle }}</h4>
+				</aside>
+				<p class="Modal-Body modal-body text-center">{{ importantMessage }}</p>
+			</section>
+		</article>
+
+	</div>
+
+	<img (click)="switchLanguage()" [src]="currentLanguage" alt="Error Loading Icon" draggable="false" class="Header__Language">
+</header>
+
+
+
+<article *ngIf="!inMaintenance" class="Information">
+	<a routerLink="/contacts" class="Information__Location">
+		<img src="./assets/images/ApplicationComponent/Location.svg" alt="Error Loading Icon" draggable="false">{{ 'global:visit-us' | translate }}
+	</a>
+
+	<a [href]="contact" class="Information__Contact">
+		<img src="./assets/images/ApplicationComponent/Contact.svg" alt="Error Loading Icon" draggable="false">{{ 'global:call-us' | translate }}
+	</a>
+
+	<a routerLink="/content-policy" class="Information__Content-Policy">
+		<img src="./assets/images/ApplicationComponent/Content Policy.svg" alt="Error Loading Icon" draggable="false">{{ 'global:content-policy' | translate }}
+	</a>
+</article>
+
+
+
+<nav *ngIf="!inMaintenance" class="Navigation">
+	<a *ngFor="let navigationItem of navigation" (click)="navigate(navigationItem.route, navigationItem.label[getLanguage])" [class]="navigationItem.class">
+		<img [src]="navigationItem.icon" alt="Error Loading Icon" draggable="false" 
+			data-toggle="popover" 
+			data-trigger="hover"
+			data-placement="bottom"
+			data-html="true"
+			[title]="navigationItem.label[getLanguage]" 
+			[attr.data-content]="navigationItem.content[getLanguage]"
+		>
+		<span class="hidden">{{navigationItem.label[getLanguage]}}</span>
+	</a>
+</nav>
+
+<router-outlet></router-outlet>
+
+<footer *ngIf="!inMaintenance" class="Footer">
+	<a [href]="contact" class="Contact">
+		<img src="./assets/images/ApplicationComponent/Contact.svg" alt="Error Loading Icon" draggable="false" />
+		<span>{{ 'global:call-us' | translate }}</span>
+	</a>
+
+	<aside class="Icons">
+		<span *ngIf="!mobile">{{ 'global:follow-us' | translate }}</span>
+		<a *ngFor="let footerItem of footer" [href]="footerItem.link" target="_blank">
+			<img [src]="footerItem.icon" alt="Error Loading Icon" draggable="false">
+		</a>
+	</aside>
+</footer>

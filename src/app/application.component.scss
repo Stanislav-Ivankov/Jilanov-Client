@@ -1,0 +1,165 @@
+@import '../assets/scss/variables.scss';
+
+
+
+.Header {
+	@include Flex(center, space-evenly);
+	margin-top: 12.5px;
+
+	&__Logo {
+		@include Image-Size(60.5px);
+		margin-bottom: 12.5px;
+		text-decoration: none;
+	}
+
+	&__User {
+		@include Image-Size(48px);
+		margin-bottom: 12.5px;
+		text-decoration: none;
+	}
+
+	.Cart-Container {
+		position: relative;
+	}
+
+	&__Cart {
+		@include Image-Size(48px);
+		margin-bottom: 12.5px;
+		text-decoration: none;
+
+		&__Indicator {
+			position: absolute;
+			top: 0%;
+			left: 0%;
+			padding: 0px 3.125px;
+			border-radius: 3.125px;
+			color: rgba($White, 1);
+			background-color: rgba($Main-Gradient-3rd-Part, 1);
+		}
+	}
+
+	&__Important {
+		@include Image-Size(48px);
+		margin-bottom: 12.5px;
+		@include Blink-Animation(1s);
+		cursor: pointer;
+	}
+
+	&__Modal {
+
+		.Modal-Header {
+			@include Flex(center, center);
+			padding: 25px 12.5px;
+			border-color: rgba($Dark-White, 1);
+
+			img {
+				@include Image-Size(48px);
+				margin-right: 12.5px;
+			}
+
+			.Modal-Title {
+				text-align: justify;
+				font-size: 16px;
+			}
+		}
+
+		.Modal-Body {
+			margin: 0px;
+			padding: 25px 50px;
+			text-align: justify;
+		}
+	}
+
+	&__Language {
+		@include Image-Size(48px);
+		margin-bottom: 12.5px;
+		cursor: pointer;
+	}
+}
+
+
+
+.Information {
+	@include Flex(center, space-evenly);
+	margin-bottom: 25px;
+	padding-top: 12.5px;
+	background: $Main-Gradient;
+
+	&__Location, &__Contact, &__Content-Policy {
+		@include Flex(center, center);
+		padding-bottom: 12.5px;
+		text-decoration: none;
+		text-align: center;
+		color: rgba($White, 1);
+
+		img {
+			@include Image-Size(24px);
+			margin: 0px 12.5px;
+		}
+	}
+}
+
+
+
+.Navigation {
+	@include Flex(center, space-evenly);
+	margin-bottom: 25px;
+
+	&__Computers, &__Laptops, &__Security-Cameras, &__Hardware-Components, &__Consumables, &__Software-Services, &__Laptop-Components, &__Software-Development {
+		margin-bottom: 25px;
+		text-decoration: none;
+		text-align: center;
+
+		// &:hover span {
+		// 	display: block;
+		// }
+
+		img {
+			@include Image-Size(48px);
+		}
+	}
+}
+
+.spacing {
+	height: 50px;
+}
+
+.Footer {
+	@media only screen and (min-width: 600px) and (max-width: 900px) {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+	}
+	@include Flex(center, space-evenly);
+	padding-top: 12.5px;
+	background: $Main-Gradient;
+
+	.Contact {
+		@include Flex(center, center);
+		padding-bottom: 12.5px;
+		text-decoration: none;
+		text-align: center;
+		color: rgba($White, 1);
+
+		img {
+			@include Image-Size(24px);
+			margin: 0px 12.5px;
+		}
+	}
+
+	.Icons {
+		@include Flex(center, center);
+		padding-bottom: 12.5px;
+		color: rgba($White, 1);
+
+		a {
+			text-decoration: none;
+			text-align: center;
+
+			img {
+				@include Image-Size(24px);
+				margin: 0px 12.5px;
+			}
+		}
+	}
+}

@@ -1,0 +1,21 @@
+<Breadcrumbs
+	[category]="category"
+	[products]="products.length"
+></Breadcrumbs>
+
+<section class="Row">
+	<aside class="Column-Left col-sm-4">
+		<Filters
+		[products]="products"
+	></Filters>
+	</aside>
+	<aside class="Column-Right col-sm-8">
+	<!-- <aside class="Column-Right col-sm-12"> -->
+		<Products
+			[products]="products"
+		></Products>
+	</aside>
+</section>
+
+<Last-Seen-Items></Last-Seen-Items>
+<div *ngIf="loading" class="loader"></div>

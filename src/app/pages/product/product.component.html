@@ -1,0 +1,100 @@
+<Breadcrumbs
+	[category]="category"
+	[product]="product.model[getLanguage]"
+	[products]="null"
+></Breadcrumbs>
+
+
+
+<main class="Row">
+
+	<article class="Column-Left col-sm-6">
+
+		<h3>{{ 'global:gallery' | translate }}</h3>
+		<hr>
+
+		<section>
+			<aside data-ride="carousel" data-pause="hover" data-interval="10000000" id="CAROUSEL" class="Carousel carousel slide carousel-fade">
+				<div *ngIf="product.images" class="carousel-inner">
+					<article *ngFor="let image of product.images; let Index = index" class="carousel-item" [class.active]="0 == Index">
+						<lib-ngx-image-zoom
+							[zoomMode]="mobile ? 'toggle' : 'hover'"
+							[thumbImage]="getImageLink + image"
+							[fullImage]="getImageLink + image"
+						></lib-ngx-image-zoom>
+					</article>
+				</div>
+
+				<a *ngFor="let arrow of arrows" href="#CAROUSEL" [attr.data-slide]="arrow.slide" [class]="arrow.class">
+					<img [src]="arrow.icon" alt="Error Loading Icon" draggable="false">
+				</a>
+			
+				<ul class="Carousel-Indicators carousel-indicators">
+					<li *ngFor="let slide of product.images; let Index = index" data-target="#CAROUSEL" [attr.data-slide-to]="Index" [class.active]="0 == Index"></li>
+				</ul>
+			</aside>
+		</section>
+	</article>
+
+	<article class="Column-Right col-sm-6">
+		<h3 class="Product-Title">{{product.model[getLanguage]}}</h3>
+		<h5 *ngIf="product.subTitle && product.subTitle[getLanguage]" class="Product-Title">{{product.subTitle[getLanguage]}}</h5>
+		<!-- <p class="Inventory-Number">Catalogue Number :
+			<span class="Inventory-Number__Digits"># 234234234</span>
+		</p> -->
+
+		<section class="Price">
+			<!-- <aside class="Price__Original">BGN 2300</aside> -->
+			<aside class="Price__Discounted">{{product.price}} BGN</aside>
+		</section>
+
+		<a (click)="addToCart()" class="btn btn-outline-dark">{{ 'global:add-to-cart' | translate }}</a>
+
+		<section *ngIf="product.params[getLanguage]" class="Icons">
+			<div class="Icons__Storage" *ngFor="let extra of product.params[getLanguage]">
+				<img [src]="'./assets/images/Products_' + extra.key + '.svg'" draggable="false">
+				<label *ngIf="extra.keyInfo">{{extra.keyInfo}}</label>
+				<aside *ngIf="extra.value" class="Icons_Label">{{ extra.value }}</aside>
+			</div>
+		</section>
+
+		<p class="Technical-Characteristics__Button">
+			<a class="btn btn-outline-dark" data-toggle="collapse" href="#Technical-Characteristics-Company" aria-expanded="false">{{ 'global:technical-specs' | translate }}</a>
+		</p>
+
+		<div class="Technical-Characteristics__Collapsable collapse show" id="Technical-Characteristics-Company">
+
+			<div *ngIf="product.specs[getLanguage]" class="Main-Container">
+				<div *ngFor="let specs of product.specs[getLanguage]">
+					<div class="Left-Container">{{specs.key}} :</div>
+					<div class="Right-Container">{{specs.value}}</div>
+				</div>
+			</div>
+
+		</div>
+	</article>
+</main>
+
+<section class="Extras">
+	<h4 *ngIf="product.extras && product.extras.length" class="text-center">{{ 'global:aditional-extras' | translate }}</h4>
+	<div *ngFor="let extra of product.extras">
+		<h5 class="text-center">{{extra.key[getLanguage]}}</h5>
+		<form class="form">
+			<div *ngFor="let value of extra.values" class="inputGroup">
+				<input [id]="value._id" [checked]="value.default" [name]="extra._id" type="radio"/>
+				<label [for]="value._id">
+					<div class="inline-block">{{value.key[getLanguage]}}</div>
+					<div class="inline-block right" *ngIf="!value.default">+ {{value.price}} BGN</div>
+				</label>
+			</div>
+		</form>
+	</div>
+</section>
+
+<section *ngIf="product.description" class="Description">
+	<p class="container">{{product.description[getLanguage]}}</p>
+</section>
+
+<div class="Last-Seen">
+	<Last-Seen-Items></Last-Seen-Items>
+</div>

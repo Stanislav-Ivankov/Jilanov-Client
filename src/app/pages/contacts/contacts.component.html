@@ -1,0 +1,124 @@
+<h3>{{title}}</h3>
+<hr>
+
+<main>
+
+	<ul class="Contacts__Tabs nav nav-pills">
+		<li *ngFor="let tab of tabs; let Index = index" class="nav-item">
+			<a [href]="tab.link" data-toggle="pill" [attr.aria-controls]="tab.control" class="btn btn-outline-dark nav-link" [class.active]="0 == Index">{{ tab.label | uppercase }}</a>
+		</li>
+	</ul>
+
+	<article class="Contacts__Tabs-Content tab-content">
+		<section *ngIf="isImportant" class="Important-Information">
+			<img src="./assets/images/ContactsComponent/Important.svg" alt="Error Loading Icon" draggable="false">
+			<h3 class="Important-Message">{{ importantMessage | titlecase }}</h3>
+		</section>
+
+		<section id="INFORMATION" class="Information-Container tab-pane fade show active">
+			<div class="Information-Container__Contacts">
+
+				<aside *ngFor="let location of storeLocation" [class]="location.class">
+					<img [src]="location.icon" alt="Error Loading Icon" draggable="false">{{ location.label }}
+				</aside>
+
+				<aside *ngFor="let open of openSchedule" [class]="open.class">{{ open.start }} &#x2014; {{ open.end }} </aside>
+
+				<aside class="Owner-Details">
+					<div class="Owner-Details__Image">
+						<img [src]="profilePicture" alt="Error Loading Image" draggable="false">
+					</div>
+					<h3 class="Owner-Details__Name">Antonio Jilanov</h3>
+					<h5 class="Owner-Details__Title">Owner</h5>
+					<div *ngFor="let contact of contacts" class="Owner-Details__Contacts">
+						<a [href]=" 'tel: ' + 'contact' ">
+							<img src="./assets/images/ContactsComponent/Phone.svg" alt="Error Loading Icon" draggable="false">{{ contact }}
+						</a>
+					</div>
+				</aside>
+
+			</div>
+		</section>
+
+		<section #MESSAGE id="MESSAGE" class="tab-pane fade">
+			<div class="Information-Container__Contacts">
+
+				<form [formGroup]="form" class="Contacts-Form">
+
+					<h4>{{ 'global:delivery-info' | translate }}</h4>
+				
+					<section class="row">
+						<aside class="col no-margin">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="fas fa-signature"></i>
+									</span>
+								</div>
+								<input formControlName="name" type="text" class="Name_&_Surname form-control" placeholder="{{ 'global:name-surname' | translate }}">
+							</div>
+							<span *ngIf="form.get('name').invalid && (form.get('name').dirty || form.get('name').touched)" class="Error-Name_&_Surname form-text">{{ 'global:required-field' | translate }}</span>
+						</aside>
+					</section>
+				
+					<section class="row">
+						<aside class="col">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="fas fa-signature"></i>
+									</span>
+								</div>
+								<input formControlName="email" type="email" class="Name_&_Surname form-control" placeholder="{{ 'global:email' | translate }}">
+							</div>
+							<span *ngIf="form.get('email').invalid && (form.get('email').dirty || form.get('email').touched)" class="Error-Name_&_Surname form-text">{{ 'global:required-field' | translate }}</span>
+						</aside>
+				
+						<aside class="col">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="fas fa-signature"></i>
+									</span>
+								</div>
+								<input formControlName="phone"  type="tel" class="Email form-control" placeholder="{{ 'global:phone' | translate }}">
+							</div>
+							<span *ngIf="form.get('phone').invalid && (form.get('phone').dirty || form.get('phone').touched)" class="Error-Surname form-text">{{ 'global:required-field' | translate }}</span>
+						</aside>
+					</section>
+				
+					<h4 class="margin-top-small">{{ 'global:message' | translate }}</h4>
+					<textarea formControlName="message"  form="Order-Form" rows="5" maxlength="250" placeholder="{{ 'global:message' | translate }}"></textarea>
+					
+					<button (click)="sendMessage()" type="button" class="btn btn-success double-width margin-top-big">{{ 'global:send-message' | translate }}</button>
+				</form>
+
+			</div>
+		</section>
+
+
+		<section #MAP id="MAP" class="Google-Maps-Container tab-pane fade"></section>
+		
+
+
+
+		<section id="SHOP-VIEW" class="tab-pane fade">
+			<aside data-ride="carousel" id="CAROUSEL" class="Carousel carousel slide carousel-fade">
+				<div class="carousel-inner">
+					<article *ngFor="let slide of slides; let Index = index" class="carousel-item" [class.active]="0 == Index">
+						<img [src]="slide.image" alt="Error Loading Image" draggable="false">
+					</article>
+				</div>
+
+				<a *ngFor="let arrow of arrows" href="#CAROUSEL" [attr.data-slide]="arrow.slide" [class]="arrow.class">
+					<img [src]="arrow.icon" alt="Error Loading Icon" draggable="false">
+				</a>
+			
+				<ul class="Carousel-Indicators carousel-indicators">
+					<li *ngFor="let slide of slides; let Index = index" data-target="#CAROUSEL" [attr.data-slide-to]="Index" [class.active]="0 == Index"></li>
+				</ul>
+			</aside>
+		</section>
+	</article>
+
+</main>

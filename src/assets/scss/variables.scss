@@ -1,0 +1,112 @@
+// COLORS
+$Black: #000;
+$Dark-White: #D7D7D7;
+$Main-Gradient-1st-Part: #12C2E9;
+$Main-Gradient-2nd-Part:#C471ED;
+$Main-Gradient-3rd-Part: #F64F59;
+$Main-Gradient-4rth-Part: rgb(62, 236, 62);
+$White: #FFF;
+
+
+
+// FONTS
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+
+
+
+// GRADIENTS
+$Main-Gradient: linear-gradient( 90deg,
+	$Main-Gradient-1st-Part 0%,
+	$Main-Gradient-2nd-Part 50%,
+	$Main-Gradient-3rd-Part 100%
+);
+
+
+
+// MIXINS
+@mixin Absolute-Center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin Blink-Animation($Duration) {
+	animation: Blink $Duration linear infinite alternate;
+
+	@keyframes Blink {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+}
+
+@mixin Flex($Align-Items, $Justify-Content, $Flex-Flow: row wrap) {
+	display: flex;
+	align-items: $Align-Items;
+	justify-content: $Justify-Content;
+	flex-flow: $Flex-Flow;
+	@supports (-ms-ime-align: auto) {
+		justify-content: space-between;
+		padding-left: 60px;
+		padding-right: 60px;
+	}
+}
+
+@mixin Highlight-Tabs {
+	& > &__Log-In > a.active,
+	&__Sign-Up > a.active,
+		&-Content > &-Content__Log-In > .show,
+		&-Content > &-Content__Sign-Up > .show {
+			background-color: rgba($White, 1);
+		}
+}
+
+@mixin Horizontal-Center {
+	margin: 0 auto;
+}
+
+@mixin Image-Size($Width, $Display: block) {
+	display: $Display;
+	width: $Width;
+	height: auto;
+}
+
+@mixin Media-Transition {
+	transition: all 0.25s ease-in-out;
+}
+
+@mixin Roboto-Mono {
+	font-family: 'Roboto Mono';
+}
+
+@mixin Spin-Button-Disable {
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+	}
+
+	input[type=number] {
+		-moz-appearance: textfield;
+	}
+}
+
+
+
+// UTILITY CLASSES
+.Form-Control {
+
+	&:focus {
+		border-color: rgba($Main-Gradient-1st-Part, 1);
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba($Main-Gradient-1st-Part, 0.5);
+	}
+}
+
+.Form-Control-Invalid {
+	border-color: rgba($Main-Gradient-3rd-Part, 1);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba($Main-Gradient-3rd-Part, 0.5);
+}

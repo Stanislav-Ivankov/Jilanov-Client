@@ -1,0 +1,19 @@
+<main class="Maintenance-Page">
+
+	<img src="./assets/images/MaintenancePageComponent/Maintenance.svg" alt="Error Loading Icon" draggable="false">
+
+	<h3 class="Maintenance-Page__Title">UPDATE IS IN PROGRESS</h3>
+
+	<h4 class="Maintenance-Page__Description">We Are In The Process Of Performing Maintenance On Our Site.</h4>
+
+	<h5 class="Maintenance-Page__Contacts">For More Information, Feel Free To
+		<a [href]="contact">Call Us</a>, Or Follow Us On
+	</h5>
+
+	<aside class="Maintenance-Page__Icons">
+		<a *ngFor="let icon of icons" [href]="icon.link" target="_blank">
+			<img [src]="icon.icon" draggable="false">
+		</a>
+	</aside>
+
+</main>

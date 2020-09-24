@@ -1,0 +1,149 @@
+@import '../../../../assets/scss/variables.scss';
+
+.Products_Wrapper {
+	display: flex;
+	flex-wrap: wrap;
+
+	img {
+		width: 160px;
+		margin: 0px auto;
+	}
+
+	.Card {
+		position: relative;
+		width: 275px;
+		margin: 25px auto;
+		text-align: justify;
+		transition: all 0.25s ease-in-out;
+
+		.Promotion-Label {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 96px;
+			height: 96px;
+			overflow: hidden;
+
+			&__Text {
+				width: 135px;
+				padding: 6.25px 0px;
+				position: absolute;
+				top: 20px;
+				left: -35px;
+				transform: rotate(-45deg);
+				transform-origin: 50% 50%;
+				background-color: rgba($Main-Gradient-3rd-Part, 1);
+				color: rgba($White, 1);
+				line-height: 14px;
+				text-align: center;
+			}
+		}
+		.Status-Label {
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			width: 60px;
+			height: 60px;
+			overflow: hidden;
+
+			&__Text {
+				width: 60px;
+				height: 60px;
+				font-size: 30px;
+				border-radius: 60px;
+				position: absolute;
+				padding-top: 20px;
+				background-color: rgba($Main-Gradient-4rth-Part, 1);
+				color: rgba($White, 1);
+				line-height: 20px;
+				text-align: center;
+			}
+		}
+
+		.Legend {
+			width: 100%;
+			height: 45px;
+			@include Flex(center, center);
+
+			img {
+				@include Image-Size(32px);
+				margin: 12.5px 6.25px 0px 6.25px;
+			}
+		}
+
+		&:hover {
+			box-shadow: 0px 1px 5px rgba($Dark-White, 1);
+			cursor: pointer;
+		}
+
+		&-Title {
+			margin-bottom: 25px;
+			font-size: 18px;
+			text-align: center;
+		}
+
+		&-Text {
+			display: flex;
+			flex-direction: column;
+			div {
+				width: 100%;
+				margin-bottom: 12.5px;
+				text-align: start;
+				font-size: 14px;
+
+				img {
+					@include Image-Size(28px, 'inline-block');
+					margin-right: 12.5px;
+				}
+			}
+		}
+
+		&-Links {
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			padding: 0px;
+			background-color: rgba($Dark-White, 0.25);
+			@supports (-ms-ime-align: auto) {
+				text-align: center;
+				display: block;
+			}
+
+			i {
+				padding: 12.5px;
+				font-size: 24px;
+				color: rgba($Black, 1);
+				@include Media-Transition;
+
+				&:hover {
+					color: rgba($Main-Gradient-1st-Part, 1);
+				}
+			}
+
+			.Discount {
+				padding: 0px 6.25px;
+				border-radius: 6.25px;
+				background-color: rgba($Main-Gradient-3rd-Part, 1);
+				color: rgba($White, 1);
+			}
+		}
+	}
+}
+
+
+
+.Pagination {
+	margin: 25px auto 0px auto;
+
+	li {
+		a {
+			color: rgba($Main-Gradient-1st-Part, 1);
+		}
+
+		&.active > a {
+			background-color: rgba($Main-Gradient-1st-Part, 1);
+			border-color: rgba($Main-Gradient-1st-Part, 1);
+			color: rgba($White, 1);
+		}
+	}
+}

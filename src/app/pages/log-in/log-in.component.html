@@ -1,0 +1,57 @@
+<ul class="Tabs nav nav-pills">
+	<li *ngFor="let tab of tabs; let Index = index" class="nav-item" [class]="tab.class">
+		<a [href]="tab.link" data-toggle="pill" class="nav-link" [class.active]="0 == Index">
+			<img [src]="tab.icon" alt="Error Loading Icon" draggable="false">{{ tab.label }}
+		</a>
+	</li>
+</ul>
+
+
+
+<main class="Tab-Content tab-content">
+
+	<article  id="LOG-IN" class="Tab-Content__Log-In tab-pane fade show active">
+		<form (ngSubmit)="submitLogInForm()" [formGroup]="logInForm">
+
+			<ng-container *ngFor="let field of formFields">
+
+				<section [class]="field.class">
+					<aside class="input-group-prepend">
+						<span class="input-group-text">
+							<img [src]="field.icon" alt="Error Loading Icon" draggable="false">
+						</span>
+					</aside>
+					<input [formControlName]="field.placeholder" [type]="field.type" [placeholder]="field.placeholder" [autocomplete]="field.autocomplete" class="Form-Control form-control">
+				</section>
+				<span class="form-text" [class]="field['Error-Class']">{{ field['Error-Label'] }}</span>
+
+			</ng-container>
+
+			<button type="submit" class="btn btn-dark">Log In</button>
+			<button (click)="goBack()" type="button" class="btn btn-outline-dark">Back</button>
+
+		</form>
+
+		<a routerLink="#" class="Forgotten-Password-Link">Forgotten Password ?</a>
+		<hr>
+
+
+
+		<section class="Log-In-Options">
+			<h3 class="Log-In-Options__Title">Log In Also Using</h3>
+			<aside class="Log-In-Options__Container">
+				<a *ngFor="let option of logInOptions" [routerLink]="option.route">
+					<img [src]="option.icon" alt="Error Loading Icon" draggable="false" [class]="option.class">
+				</a>
+			</aside>
+		</section>
+	</article>
+
+
+
+	<article id="SIGN-UP" class="Tab-Content__Sign-Up tab-pane fade">
+		<h3 class="Sign-Up__Title">Don't Have An Account Yet ?</h3>
+		<button routerLink="#" type="button" class="btn btn-dark">Register</button>
+	</article>
+
+</main>

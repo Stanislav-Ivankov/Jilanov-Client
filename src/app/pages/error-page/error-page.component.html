@@ -1,0 +1,56 @@
+<ng-container [ngSwitch]="statusCode">
+
+	<main *ngSwitchCase="401" class="Unauthorized">
+
+		<img src="./assets/images/ErrorPageComponent/401.svg" alt="Error Loading Icon" draggable="false">
+
+		<h3 class="Unauthorized__Title">
+			Error <span class="Unauthorized__Title__Status-Code">401</span> UNAUTHORIZED !!!
+		</h3>
+
+		<h4 class="Unauthorized__Description">
+			The Page Or URL You Are Trying To Visit Requires User Login To View.
+			Please, Provide Credentials In Order To Continue.
+		</h4>
+
+		<button (click)="goBack()" type="button" class="btn btn-outline-dark">Back</button>
+		<button routerLink="/log-in" type="button" class="btn btn-dark">Log In Page</button>
+
+	</main>
+
+
+
+	<main *ngSwitchCase="404" class="Page-Not-Found">
+
+		<img src="./assets/images/ErrorPageComponent/404.svg" alt="Error Loading Icon" draggable="false">
+
+		<h3 class="Page-Not-Found__Title">
+			Error <span class="Page-Not-Found__Title__Status-Code">404</span> PAGE NOT FOUND !!!
+		</h3>
+
+		<h4 class="Page-Not-Found__Description">{{'global:page-not-found' | translate}}.</h4>
+
+		<button (click)="goBack()" type="button" class="btn btn-dark">{{'global:back' | translate}}</button>
+
+	</main>
+
+
+
+	<main *ngSwitchCase="500" class="Server-Error">
+
+		<img src="./assets/images/ErrorPageComponent/500.svg" alt="Error Loading Icon" draggable="false">
+
+		<h3 class="Server-Error__Title">
+			Error <span class="Server-Error__Title__Status-Code">500</span> SERVER ERROR !!!
+		</h3>
+
+		<h4 class="Server-Error__Description">
+			We Are Experiencing Technical Difficulties.
+			For More Information Feel Free To <a [href]="contact">Call Us</a>.
+		</h4>
+
+		<button (click)="goBack()" type="button" class="btn btn-dark">Go Back</button>
+
+	</main>
+
+</ng-container>

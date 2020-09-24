@@ -1,0 +1,143 @@
+@import '../../../assets/scss/variables.scss';
+
+
+
+.Carousel {
+	@include Image-Size(100%);
+	margin-bottom: 75px;
+
+	.Carousel-Item {
+		position: relative;
+
+		img {
+			@include Image-Size(100%);
+		}
+
+		.Caption {
+			width: 350px;
+			position: absolute;
+			top: 50%;
+			left: 17.5%;
+			transform: translateY(-50%);
+			text-align: justify;
+			color: rgba($White, 1);
+
+			&__Title {
+				margin-bottom: 25px;
+				font-size: 32px;
+			}
+
+			&__Description {
+				margin-bottom: 25px;
+			}
+
+			button {
+				width: 150px;
+			}
+		}
+	}
+
+	& .Carousel-Control-Previous,
+	& .Carousel-Control-Next {
+		img {
+			background: white;
+			border-radius: 33px;
+			@include Image-Size(48px);
+		}
+	}
+
+	ul {
+		margin-bottom: 25px;
+
+		li {
+			margin: 0px 3.125px;
+		}
+	}
+}
+
+
+
+.Accordion-Container {
+	@include Flex(center, space-evenly);
+	margin-bottom: 25px;
+
+	.Accordion {
+
+		.Card {
+			width: 350px;
+			margin-bottom: 25px;
+			border: 1px solid rgba($Black, 0.125);
+			border-radius: 6.25px;
+			box-shadow: 0px 1px 5px rgba($Dark-White, 1);
+
+			.Card-Header {
+				padding: 0px;
+
+				button {
+					width: 100%;
+					height: auto;
+					padding: 12.5px 0px;
+					box-shadow: none;
+					background-color: rgba($Black, 0.025);
+				}
+			}
+
+			.Card-Body {
+
+				&__Content {
+					@include Flex(center, flex-start);
+					margin: 25px 12.5px;
+					text-decoration: none;
+					text-align: center;
+					color: rgba($Black, 1);
+
+					img {
+						@include Image-Size(32px);
+						margin: 12.5px;
+					}
+				}
+			}
+		}
+	}
+}
+
+// TODO: Fix those styles
+@media only screen and (max-width: 500px) and (min-height: 800px) {
+	.Carousel-Item img {
+		height: 150px!important;
+		object-fit: cover;
+	}
+	#CAROUSEL {
+		height: 440px;
+	}
+}
+
+@media only screen and (max-width: 400px) and (min-height: 800px) {
+	.Carousel-Item img {
+		height: 150px!important;
+		object-fit: cover;
+	}
+	#CAROUSEL {
+		height: 400px;
+	}
+}
+
+@media only screen and (min-width: 400px) and (max-height: 800px) and (max-width: 800) {
+	.Carousel-Item img {
+		height: 150px!important;
+		object-fit: cover;
+	}
+	#CAROUSEL {
+		height: 350px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.Carousel-Item img {
+		height: 150px!important;
+		object-fit: cover;
+	}
+	#CAROUSEL {
+		background: rgba(1,1,1,0.1);
+	}
+}

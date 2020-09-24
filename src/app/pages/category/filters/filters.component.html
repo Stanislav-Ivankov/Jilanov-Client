@@ -1,0 +1,25 @@
+<div class="Accordion__Wrapper">
+
+	<form (ngSubmit)="Submit()" [formGroup]="Filter_Form">
+
+		<Sort [products]="products"></Sort>
+
+		<!-- <section *ngFor="let Category of Categories" [id]="Category.Accordion_ID" class="Accordion accordion">
+			<article class="Card card">
+				<div [id]="Category.Heading_ID" class="Card-Header card-header">
+					<button class="Button btn collapsed" type="button" data-toggle="collapse" [attr.data-target]="Category.Data_Target">{{ Category.Category_Name }}</button>
+				</div>
+				<div [id]="Category.Div_ID" class="collapse" [attr.data-parent]="Category.Data_Parent">
+					<div class="Card-Body">
+						<aside *ngFor="let Sub_Category of Category.Sub_Categories" class="Card-Body__Content">
+							<input [formControlName]="Sub_Category.Name" type="checkbox" [id]="Sub_Category.Name">
+							<label (click)="Submit()" [for]="Sub_Category.Name">{{ Sub_Category.Name }}</label>
+						</aside>
+					</div>
+				</div>
+			</article>
+		</section> -->
+
+	</form>
+
+</div>

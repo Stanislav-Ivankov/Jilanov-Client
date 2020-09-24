@@ -1,0 +1,241 @@
+@import '../../../assets/scss/variables.scss';
+
+
+
+h3 {
+	margin-bottom: 25px;
+	text-align: center;
+	font-size: 24px;
+}
+
+hr {
+	width: 75%;
+	max-width: 700px;
+	margin-bottom: 50px;
+	background-color: rgba($Dark-White, 0.25);
+}
+
+
+
+main {
+	margin: 0 auto 50px;
+
+	.Contacts__Tabs {
+		@include Flex(center, center);
+		margin-bottom: 25px;
+		
+		@supports (-ms-ime-align: auto) {
+			padding-left: 20%;
+			padding-right: 20%;
+		}
+
+		li {
+			width: 150px;
+			margin: 0px 12.5px 25px;
+			text-align: center;
+
+			a {
+				height: 70px;
+				display: flex;
+				justify-content: center; /* align horizontal */
+				align-items: center; /* align vertical */
+			}
+		}
+	}
+
+
+
+	.Contacts__Tabs-Content {
+
+		.Important-Information {
+			@include Flex(center, center);
+			width: 75%;
+			max-width: 700px;
+			margin: 0 auto 50px;
+
+			img {
+				@include Image-Size(64px);
+				margin-bottom: 25px;
+			}
+
+			.Important-Message {
+				text-align: justify;
+				font-size: 16px;
+				color: rgba($Main-Gradient-3rd-Part, 1);
+			}
+		}
+
+		.Information-Container {
+
+			&__Contacts {
+				text-align: center;
+
+				.Address, .City {
+					@include Flex(center, center);
+					margin-bottom: 25px;
+		
+					@supports (-ms-ime-align: auto) {
+						justify-content: center;
+					}
+
+					img {
+						@include Image-Size(22px);
+						margin-right: 12.5px;
+					}
+				}
+
+				.Working-Time-Week {
+					margin-bottom: 25px;
+				}
+
+				.Working-Time-Weekend {
+					margin-bottom: 50px;
+				}
+
+				.Owner-Details {
+					@include Horizontal-Center;
+					text-align: center;
+
+					&__Image {
+						width: 192px;
+						margin: 0 auto 12.5px;
+
+						img {
+							@include Image-Size(100%);
+							border-radius: 6.25px;
+						}
+					}
+
+					&__Name {
+						margin-bottom: 12.5px;
+						font-size: 16px;
+					}
+
+					&__Title {
+						margin-bottom: 25px;
+						font-size: 16px;
+					}
+
+					&__Contacts {
+						@include Flex(center, center);
+		
+						@supports (-ms-ime-align: auto) {
+							justify-content: center;
+						}
+	
+
+						&:not(:last-of-type) {
+							margin-bottom: 12.5px;
+						}
+
+						a {
+							text-decoration: none;
+							color: rgba($Black, 1);
+
+							img {
+								@include Image-Size(22px, 'inline');
+								margin-right: 12.5px;
+							}
+						}
+					}
+				}
+			}
+		}
+
+
+
+		.Google-Maps-Container {
+			height: 50vh;
+			@include Horizontal-Center;
+			border-radius: 6.25px;
+		}
+
+
+
+		.Carousel {
+			width: 50%;
+			@include Horizontal-Center;
+
+			img {
+				@include Image-Size(100%);
+				border-radius: 12.5px;
+			}
+
+			& .Carousel-Control-Previous,
+			& .Carousel-Control-Next {
+
+				img {
+					@include Image-Size(48px);
+				}
+			}
+
+			ul {
+				margin-bottom: 25px;
+
+				li {
+					width: 12.5px;
+					height: 12.5px;
+					margin: 0px 3.125px;
+					border-radius: 100%;
+				}
+			}
+		}
+	}
+}
+
+.Contacts-Form {
+	width: 75%;
+	max-width: 700px;
+	margin: 0 auto 100px;
+
+	h4 {
+		margin-bottom: 25px;
+		text-align: center;
+		font-size: 18px;
+	}
+
+	section {
+		margin-bottom: 12.5px;
+
+		&:last-of-type {
+			margin-bottom: 50px;
+		}
+
+		[class ^= "Error-"] {
+			margin-top: 12.5px;
+			color: rgba($Main-Gradient-3rd-Part, 1);
+		}
+
+		i {
+			width: 16px;
+		}
+	}
+
+	textarea {
+		display: block;
+		width: 75%;
+		max-width: 700px;
+		@include Horizontal-Center;
+		padding: 12.5px;
+		border-radius: 12.5px;
+		resize: none;
+		background-color: transparent;
+
+		&:focus {
+			outline: none;
+		}
+	}
+}
+
+
+.col {
+	@media only screen and (max-width: 900px) {
+		flex: 0 0 100%;
+		&:first-child {
+			margin-bottom: 15px;
+		}
+		&.no-margin {
+			margin-bottom: 0;
+		}
+	}
+}
